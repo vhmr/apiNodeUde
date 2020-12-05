@@ -7,11 +7,12 @@ const { HomeService } = require('../services');
 const { HomeController } = require('../controllers');
 //models
 const { UserModel, PayModel, WalletModel, SellModel} = require('../models');
+// Repositorios
+const { UserRepository, WalletRepository, PayRepository, SellRepository} = require('../repositories');
 //routes
 const { HomeRoutes } = require('../routes/index.routes');
 const Routes = require('../routes');
 
-const HomeServicie = require("../services/home.service");
 const container = createContainer();
 
 container.register({
@@ -19,7 +20,7 @@ container.register({
     router: asFunction(Routes).singleton(),
     config: asValue(config)
 }).register({
-    HomeService: asClass(HomeServicie).singleton()
+    HomeService: asClass(HomeService).singleton()
 }).register({
     HomeController: asClass(HomeController.bind(HomeController)).singleton()
 }).register({
@@ -29,6 +30,11 @@ container.register({
     Wallet: asValue(WalletModel),
     Pay: asValue(PayModel),
     Sell: asValue(SellModel)
+}).register({
+    UserRepository: asClass(UserRepository).singleton(),
+    PayRepository: asClass(PayRepository).singleton(),
+    WalletRepository: asClass(WalletRepository).singleton(),
+    SellRepository: asClass(SellRepository).singleton()
 });
 
 module.exports = container;

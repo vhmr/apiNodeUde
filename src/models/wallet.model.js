@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 WalletSchema = new Schema({
-    userId: {type: Schema.Type.ObjectId, ref: "user", required: true, autopopulate: true},
+    userId: {type: Schema.Types.ObjectId, ref: "user", required: true, autopopulate: true},
     saldo: {type: Number },
 
 });

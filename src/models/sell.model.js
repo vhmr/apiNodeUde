@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 SellSchema = new Schema({
     product: {type: String, required: true},
     price: {type: Number, required: true},
-    payId: {type: Schema.Type.ObjectId, ref: "pay", autopopulate: true},
+    payId: {type: Schema.Types.ObjectId, ref: "pay", autopopulate: true},
     created: { 
         type: Date,
         default: Date.now
