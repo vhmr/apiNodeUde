@@ -12,6 +12,20 @@ class BaseRepository {
         return await this.model.find()
     }
 
+    async searchDocumentPhone({document, phone}) {
+
+        const client = await this.model.find({"document": document, "phone": phone});
+        
+        if(client.length === 0){
+            const error = new Error();
+            error.status = 400;
+            error.message = "No se encuentra el cliente";
+            throw error;
+        }
+
+        return client;
+    }
+
     async create(entity){
         return await this.model.create(entity)
     }

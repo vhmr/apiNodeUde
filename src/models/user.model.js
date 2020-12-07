@@ -4,11 +4,11 @@ const {compareSync, hashSync, genSaltSync} = require("bcryptjs");
 
 const UserSchema = new Schema({
     name: {type: String, required: true},
-    email: {type: String, required: true},
+    user: {type: String, required: true},
+    u_type: {type: String},
+    u_pick: {type: String},
     password: {type: String, required: true},
-    token: {type: String, required: true},
-    phone: {type: String, required: true},
-    document: {type: String, required: true},
+    u_token: {type: String, required: true},
     created: { 
         type: Date,
         default: Date.now
